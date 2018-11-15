@@ -5,7 +5,7 @@
     <b-navbar-brand class="head" href="#">Sample project</b-navbar-brand>
     <!-- Right aligned nav items -->
     <b-navbar-nav class="ml-auto">
-      <b-nav-item  right>Sign In</b-nav-item>
+      <b-nav-item  right><router-link id="link" to="/login">Sign In</router-link></b-nav-item>
     </b-navbar-nav>
 </b-navbar>
 <!-- <p v-model="text"></p> -->
@@ -19,7 +19,7 @@
     <input type="password" placeholder="Enter password" v-model="password"><br/><br/>
     <label>Confirm Password</label>
     <input type="password" placeholder="Re-Enter password" v-model="confirmPassword"><br/><br/>
-    <button class="btn" v-on:click="addUser">Submit</button>
+    <button class="btn" v-on:click.prevent="addUser">Submit</button>
 </form>
 </div>
   </div>
@@ -88,5 +88,9 @@ input{
     height:40px;
     background-color:#17a2b8;
      border-radius: 8px;
+}
+#link{
+  color:white;
+  text-decoration: none;
 }
 </style>

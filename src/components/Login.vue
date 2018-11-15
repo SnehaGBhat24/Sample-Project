@@ -6,7 +6,7 @@
     <b-navbar-brand class="head" href="#">Sample project</b-navbar-brand>
     <!-- Right aligned nav items -->
     <b-navbar-nav class="ml-auto">
-      <b-nav-item  right>Change Password</b-nav-item>
+      <b-nav-item  right><router-link id="link" to="/change">Change Password</router-link></b-nav-item>
     </b-navbar-nav>
 </b-navbar>
 <div class="form">
@@ -15,7 +15,7 @@
     <input type="email" placeholder="Enter Email" v-model="logUser" ><br/><br/>
     <label>Password</label>
     <input type="password" placeholder="Enter password" v-model="logPass"><br/><br/>
-    <button id="btn" @click="Login">Submit</button>
+    <button id="btn" @click.prevent="Login">Submit</button>
 </form>
 </div>
   </div>
@@ -92,5 +92,9 @@ input{
     height:40px;
     background-color:#17a2b8;
      border-radius: 8px;
+}
+#link{
+  color:white;
+  text-decoration: none;
 }
 </style>
