@@ -2,21 +2,41 @@
 
 <template>
 <div>
-   <b-navbar class="header" toggleable="md" type="dark" variant="info">
-    <b-navbar-brand class="head" href="#">Sample project</b-navbar-brand>
-    <!-- Right aligned nav items -->
-    <b-navbar-nav class="ml-auto">
-      <b-nav-item  right><router-link id="link" to="/change">Change Password</router-link></b-nav-item>
-    </b-navbar-nav>
-</b-navbar>
+    <nav class="navbar">
+    <div class="navbar-brand" style="font-size:26px;font-weight:bold">
+      <a class="navbar-item">Sample Project</a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a><router-link class="link" to="/">Home</router-link></a>
+        </div>
+      </div>
+      <div class="navbar-item">
+        <div class="buttons">
+          <a><router-link class="link" to="/change">Change Password</router-link></a>
+        </div>
+      </div>
+    </div>
+  </nav>
 <div class="form">
-<form>
-    <label>Email</label>
-    <input type="email" placeholder="Enter Email" v-model="logUser" ><br/><br/>
-    <label>Password</label>
-    <input type="password" placeholder="Enter password" v-model="logPass"><br/><br/>
-    <button id="btn" @click.prevent="Login">Submit</button>
-</form>
+    <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+                <input class="input" type="email" placeholder="Email" v-model="user.email">
+            </div>
+       </div>
+        <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+                <input class="input" type="password" placeholder="Password" v-model="user.password">
+            </div>
+       </div>
+    <div class="has-text-centered">
+            <a class="btn" v-on:click.prevent="Login">Submit</a>
+        </div>
+
 </div>
   </div>
 </template>
@@ -27,19 +47,26 @@ export default
    data()
    {
      return{
-     logUser:'',
-     logPass:'',
-     }
+       user:{
+     email:'',
+     password:''
+     
+     },
+   }
    },
  methods:
  {
      Login:function()
      {
+        var email= /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/.test(this.user.email);
        var arr = this.$store.state.Users;
        console.log('store value',arr);
-       let obj = arr.find(item => item.email === this.logUser);
-         if(obj){
-            if(obj.password === this.logPass)
+       let obj = arr.find(item => item.email === this.user.email);
+         if(this.user.email === "" || this.user.password === ""){
+            this.$swal('Fileds cannot be empty');
+         }
+         else if(obj && obj.password === this.user.password){
+            if(obj.password === this.user.password)
             {
                console.log('found',obj);
                console.log('found name',obj.name);
@@ -50,10 +77,6 @@ export default
                this.$swal('Password Or Email Incorrect');
             }
           
-          }
-          else if(this.logUser ==="" || this.logPass === "")
-          {
-               this.$swal('Fileds cannot be empty');
           }
           else
             {
@@ -67,14 +90,22 @@ export default
 </script>
 
 <style>
-.header{
+.navbar{
+  background-color:#17a2b8;
   margin-top:-60px;
+  color:white;
 }
-.head{
-  font-size: 24px ;
+.navbar-item{
+  font-size: 20px;
+  color:white;
 }
-.ml-auto{
-  font-size: 21px;
+.link{
+  color:white;
+  text-decoration: none;
+}
+.link:hover{
+  text-decoration: none;
+  color:white;
 }
 .form{
     margin-top:50px;
@@ -82,19 +113,11 @@ export default
     height:500px;
     width:500px;
 }
-input{
-    width:500px;
-    height:40px;
-    border-radius: 8px;
-}
-#btn{
+.btn{
+   margin-top:20px;
      width:500px;
     height:40px;
     background-color:#17a2b8;
      border-radius: 8px;
-}
-#link{
-  color:white;
-  text-decoration: none;
 }
 </style>

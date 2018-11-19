@@ -10,6 +10,14 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "bootstrap-vue": "^2.0.0-rc.11",
+    "bulma": "^0.7.2",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.12",
+    "nodemon": "^1.18.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vue-swal": "^0.1.0",

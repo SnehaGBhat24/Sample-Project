@@ -8,6 +8,7 @@ import { store } from './Store/store';
 Vue.use(BootstrapVue)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bulma/css/bulma.css'
 import VueSwal from 'vue-swal'
  
 Vue.use(VueSwal)
