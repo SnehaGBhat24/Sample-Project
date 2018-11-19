@@ -71,6 +71,7 @@ export default
                console.log('found',obj);
                console.log('found name',obj.name);
                this.$swal('Welcome',obj.name);
+               setTimeout( () => this.$router.push('/'),1000);
             }
             else
             {

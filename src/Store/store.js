@@ -15,12 +15,12 @@ export const store = new Vuex.Store({
              console.log('push',state.Users);
              axios({
                 method: 'post',
-                url: 'https://demo4583449.mockable.io/register',
+                url: ' https://demo9178738.mockable.io/add  ',
                 data: state.Users,
                 })
             .then(function (response) {
            //handle success
-           console.log(response.config.data);
+           console.log(response);
        })
            .catch(function (response) {
            //handle error

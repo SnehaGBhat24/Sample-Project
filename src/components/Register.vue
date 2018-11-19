@@ -91,6 +91,7 @@ export default{
         else {
              this.$store.dispatch('register',user);
              this.$swal('User Registered');
+            setTimeout( () => this.$router.push('/'),1000);
         }
   },
 }

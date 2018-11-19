@@ -52,10 +52,11 @@ export default{
       let user =  arr.find(item => item.email===this.user.email)
           if(user){
             console.log('old user',user.password)
-            user.password = this.changePass
+            user.password = this.user.password
             console.log('neew user',user.password)
             // console.log('neew user',user)
              this.$swal('Password Changed Successfully');
+             setTimeout( () => this.$router.push('/'),1000);
           }
           else if(this.user.email==="" || this.user.pass === ""){
                   this.$swal('Fields Cannot be empty');
